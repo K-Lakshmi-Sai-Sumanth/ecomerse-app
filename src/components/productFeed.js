@@ -10,6 +10,7 @@ import { faCartPlus, faBars } from "@fortawesome/fontawesome-free-solid";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import {name, email} from "../components/signup"
 
 const Imag = styled.img`
   width: 100%;
@@ -294,10 +295,10 @@ const ProductFeed = () => {
                 <FontAwesomeIcon icon={faBars} className={`${feed.menuBars}`} />
               </button>
               <ul className={` ${feed.dropdownItems}`}>
-              {
-                // <li>Sai Sumanth</li>
-                // <li>Gmail</li>
-              }
+              
+                <li>{name}</li>
+                <li>{email}</li>
+              
                 <li>
                   <button
                     className={`${feed.logoutButton}`}

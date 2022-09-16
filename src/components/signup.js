@@ -5,6 +5,8 @@ import { string, object} from 'yup'
 import {useState} from 'react';
 import axios from 'axios';
 
+export let name="";
+export let email="";
 const Signup = () => {
     const [inputValue, setInputValue]= useState({name:"",email:"",password:""});
     const [errorValue, setErrorValue]= useState({name:"",email:"",password:""});
@@ -32,7 +34,7 @@ let userSchema = object({
   });
 
 /*------------------------handle onClick-------------------------------*/ 
-    let handleOnclick=()=>{
+    const handleOnclick=()=>{
         setLoading(true)
         userSchema.validate(inputValue, {abortEarly: false} )
         .then((res)=>{
@@ -50,10 +52,12 @@ let userSchema = object({
             .then((resp)=>{
                 setLoading(false)
                 if(resp.status ===200){
+                    
                   console.log(resp)
-                //   let email=resp.data.email;
-                //   let name= resp.data.name;
+                    email=resp.data.email
+                    name= resp.data.name;
                   navigate("/login");
+                  
                 }
             })
             .catch((erro)=>{setLoading(false); console.log(erro)})
@@ -135,5 +139,6 @@ let userSchema = object({
         </div>
     );
 };
+
 export default Signup;
 
